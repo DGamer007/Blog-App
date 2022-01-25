@@ -1,9 +1,16 @@
+import Head from 'next/head';
 import AllPosts from '../../components/Posts/AllPosts';
 import { getAllPosts } from '../../utils/postsUtil';
 
 function AllPostPage({ posts }) {
     return (
-        <AllPosts posts={posts} />
+        <>
+            <Head>
+                <title>Posts</title>
+                <meta name='description' content='A list of all programming related posts' />
+            </Head>
+            <AllPosts posts={posts} />
+        </>
     );
 };
 

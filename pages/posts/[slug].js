@@ -1,9 +1,16 @@
+import Head from 'next/head';
 import PostContent from '../../components/Posts/PostDetail/PostContent';
 import { getPostData, getPostsFiles } from '../../utils/postsUtil';
 
 function PostPage({ post }) {
     return (
-        <PostContent post={post} />
+        <>
+            <Head>
+                <title>{post.title}</title>
+                <meta name='decription' content={post.excerpt} />
+            </Head>
+            <PostContent post={post} />
+        </>
     )
 };
 
