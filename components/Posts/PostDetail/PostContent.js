@@ -1,10 +1,18 @@
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
-import { Prism } from 'react-syntax-highlighter';
-import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-
+import { PrismLight } from 'react-syntax-highlighter';
+import dracula from 'react-syntax-highlighter/dist/cjs/styles/prism/dracula';
+import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+import html from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
+import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
 import PostHeader from './PostHeader';
 import styles from '../../../styles/PostContent.module.css';
+
+PrismLight.registerLanguage('js', js);
+PrismLight.registerLanguage('jsx', jsx);
+PrismLight.registerLanguage('html', html);
+PrismLight.registerLanguage('css', css);
 
 function PostContent({ post }) {
 
@@ -32,7 +40,7 @@ function PostContent({ post }) {
             const match = /language-(\w+)/.exec(className || '')
 
             return !inline && match ? (
-                <Prism style={dracula} language={match[1]}>{children}</Prism>
+                <PrismLight style={dracula} language={match[1]}>{children}</PrismLight>
             ) : (
                 <code className={className} {...props}>{children}</code>
             );

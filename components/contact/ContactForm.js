@@ -53,6 +53,10 @@ function ContactForm() {
                 status: 'success',
                 message: data.message
             });
+
+            setEmail('');
+            setName('');
+            setMessage('');
         } catch (err) {
             console.log(err);
             setNotification({
