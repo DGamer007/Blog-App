@@ -14,7 +14,7 @@ async function contact(req, res) {
         let client;
 
         try {
-            client = await MongoClient.connect(process.env.DATABASE_URL);
+            client = await MongoClient.connect(process.env.MONGODB_URL, { dbName: process.env.MONGODB_DATABASE });
         } catch (err) {
             console.log(err);
             res.status(500).json({ message: 'Connection refused from Database Server.' });
